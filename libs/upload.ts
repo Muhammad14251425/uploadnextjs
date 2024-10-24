@@ -7,8 +7,8 @@ export async function uploadImage(file: File) {
     const buffer = Buffer.from(bytes);
     const publicPath = path.join(process.cwd(), 'public', file.name);
     await writeFile(publicPath, buffer);
-    // const relativePath = path.relative(path.join(process.cwd(), 'public'), publicPath);
-    console.log(`File saved at ${publicPath}`);
+    const relativePath = path.relative(path.join(process.cwd(), 'public'), publicPath);
+    return relativePath;
 }
 
 export async function createFolder(folderName:string) {
